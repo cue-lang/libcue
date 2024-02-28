@@ -192,3 +192,13 @@ func cue_validate(v C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_er
 	}
 	return 0
 }
+
+//export cue_default
+func cue_default(v C.cue_value, res *C.bool) C.cue_value {
+	def, ok := cueValue(v).Default()
+	if res == nil {
+		return cueValueHandle(def)
+	}
+	*res = C.bool(ok)
+	return cueValueHandle(def)
+}
