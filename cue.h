@@ -90,12 +90,6 @@ cue_attr*	cue_attrs(cue_value);
 char*	cue_attr_name(cue_attr);
 char*	cue_attr_value(cue_attr);
 
-void	cue_ctx_free(cue_ctx);
-void	cue_value_free(cue_value);
-void	cue_value_freeall(cue_value*);
-void	cue_error_free(cue_error);
-void	cue_error_freeall(cue_error*);
-void	cue_attr_free(cue_attr);
-void	cue_attr_freeall(cue_attr*);
+void	cue_free(uintptr_t);
 
 #endif // cue_h

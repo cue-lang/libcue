@@ -50,3 +50,8 @@ func cueError(x C.cue_error) error {
 func cueErrorHandle(err error) C.cue_error {
 	return C.cue_value(cgo.NewHandle(err))
 }
+
+//export cue_free
+func cue_free(ref C.uintptr_t) {
+	cgo.Handle(ref).Delete()
+}
