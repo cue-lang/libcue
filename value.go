@@ -111,3 +111,75 @@ func cue_from_bytes(ctx C.cue_ctx, buf unsafe.Pointer, len C.size_t) C.cue_value
 	val := cueContext(ctx).Encode(C.GoBytes(buf, C.int(len)))
 	return cueValueHandle(val)
 }
+
+//export cue_dec_int64
+func cue_dec_int64(v C.cue_value, res *C.int64_t) C.cue_error {
+	n, err := cueValue(v).Int64()
+	if err != nil {
+		return cueErrorHandle(err)
+	}
+	*res = C.int64_t(n)
+	return 0
+}
+
+//export cue_dec_uint64
+func cue_dec_uint64(v C.cue_value, res *C.uint64_t) C.cue_error {
+	n, err := cueValue(v).Uint64()
+	if err != nil {
+		return cueErrorHandle(err)
+	}
+	*res = C.uint64_t(n)
+	return 0
+}
+
+//export cue_dec_bool
+func cue_dec_bool(v C.cue_value, res *C.bool) C.cue_error {
+	b, err := cueValue(v).Bool()
+	if err != nil {
+		return cueErrorHandle(err)
+	}
+	*res = C.bool(b)
+	return 0
+}
+
+//export cue_dec_double
+func cue_dec_double(v C.cue_value, res *C.double) C.cue_error {
+	x, err := cueValue(v).Float64()
+	if err != nil {
+		return cueErrorHandle(err)
+	}
+	*res = C.double(x)
+	return 0
+}
+
+//export cue_dec_string
+func cue_dec_string(v C.cue_value, res **C.char) C.cue_error {
+	s, err := cueValue(v).String()
+	if err != nil {
+		return cueErrorHandle(err)
+	}
+	*res = C.CString(s)
+	return 0
+}
+
+//export cue_dec_bytes
+func cue_dec_bytes(v C.cue_value, res *unsafe.Pointer, size *C.size_t) C.cue_error {
+	b, err := cueValue(v).Bytes()
+	if err != nil {
+		return cueErrorHandle(err)
+	}
+	*res = C.CBytes(b)
+	*size = C.size_t(len(b))
+	return 0
+}
+
+//export cue_dec_json
+func cue_dec_json(v C.cue_value, res *unsafe.Pointer, size *C.size_t) C.cue_error {
+	b, err := cueValue(v).MarshalJSON()
+	if err != nil {
+		return cueErrorHandle(err)
+	}
+	*res = C.CBytes(b)
+	*size = C.size_t(len(b))
+	return 0
+}
