@@ -75,3 +75,39 @@ func cue_lookup_string(v C.cue_value, str *C.char, res *C.cue_value) C.cue_error
 	*res = cueValueHandle(target)
 	return 0
 }
+
+//export cue_from_int64
+func cue_from_int64(ctx C.cue_ctx, v C.int64_t) C.cue_value {
+	val := cueContext(ctx).Encode(int64(v))
+	return cueValueHandle(val)
+}
+
+//export cue_from_uint64
+func cue_from_uint64(ctx C.cue_ctx, v C.uint64_t) C.cue_value {
+	val := cueContext(ctx).Encode(uint64(v))
+	return cueValueHandle(val)
+}
+
+//export cue_from_bool
+func cue_from_bool(ctx C.cue_ctx, v C.bool) C.cue_value {
+	val := cueContext(ctx).Encode(bool(v))
+	return cueValueHandle(val)
+}
+
+//export cue_from_double
+func cue_from_double(ctx C.cue_ctx, v C.double) C.cue_value {
+	val := cueContext(ctx).Encode(float64(v))
+	return cueValueHandle(val)
+}
+
+//export cue_from_string
+func cue_from_string(ctx C.cue_ctx, str *C.char) C.cue_value {
+	val := cueContext(ctx).Encode(C.GoString(str))
+	return cueValueHandle(val)
+}
+
+//export cue_from_bytes
+func cue_from_bytes(ctx C.cue_ctx, buf unsafe.Pointer, len C.size_t) C.cue_value {
+	val := cueContext(ctx).Encode(C.GoBytes(buf, C.int(len)))
+	return cueValueHandle(val)
+}

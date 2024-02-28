@@ -54,7 +54,7 @@ cue_value	cue_from_uint64(cue_ctx, uint64_t);
 cue_value	cue_from_bool(cue_ctx, bool);
 cue_value	cue_from_double(cue_ctx, double);
 cue_value	cue_from_string(cue_ctx, char*);
-cue_value	cue_from_bytes(cue_ctx, uint8_t*);
+cue_value	cue_from_bytes(cue_ctx, void*, size_t);
 cue_error	cue_dec_int64(cue_value, int64_t*);
 cue_error	cue_dec_uint64(cue_value, uint64_t*);
 cue_error	cue_dec_bool(cue_value, bool*);
