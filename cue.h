@@ -43,7 +43,7 @@ struct cue_attr_arg {
 cue_ctx	cue_newctx();
 
 cue_value	cue_compile_string(cue_ctx, char*, cue_bopt*, size_t);
-cue_value	cue_compile_bytes(cue_ctx, uint8_t*, cue_bopt*, size_t);
+cue_value	cue_compile_bytes(cue_ctx, void*, size_t, cue_bopt*, size_t);
 cue_value	cue_top(cue_ctx);
 cue_value	cue_bottom(cue_ctx);
 cue_value	cue_unify(cue_value, cue_value);

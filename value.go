@@ -22,10 +22,19 @@ package main
 import "C"
 
 import (
-	"cuelang.org/go/cue/cuecontext"
+	"unsafe"
 )
 
-//export cue_newctxt
-func cue_newctxt() C.cue_ctx {
-	return cueContextHandle(cuecontext.New())
+//export cue_compile_string
+func cue_compile_string(ctx C.cue_ctx, str *C.char, opts *C.struct_cue_bopt, len C.size_t) C.cue_value {
+	bopts := buildOptions(opts, len)
+	val := cueContext(ctx).CompileString(C.GoString(str), bopts...)
+	return cueValueHandle(val)
+}
+
+//export cue_compile_bytes
+func cue_compile_bytes(ctx C.cue_ctx, buf unsafe.Pointer, bufLen C.size_t, opts *C.struct_cue_bopt, optLen C.size_t) C.cue_value {
+	bopts := buildOptions(opts, optLen)
+	val := cueContext(ctx).CompileBytes(C.GoBytes(buf, C.int(bufLen)), bopts...)
+	return cueValueHandle(val)
 }
