@@ -50,3 +50,9 @@ func cue_bottom(ctx C.cue_ctx) C.cue_value {
 	val := cueContext(ctx).CompileString("_|_")
 	return cueValueHandle(val)
 }
+
+//export cue_unify
+func cue_unify(x C.cue_value, y C.cue_value) C.cue_value {
+	u := cueValue(x).Unify(cueValue(y))
+	return cueValueHandle(u)
+}
