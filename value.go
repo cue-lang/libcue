@@ -183,3 +183,12 @@ func cue_dec_json(v C.cue_value, res *unsafe.Pointer, size *C.size_t) C.cue_erro
 	*size = C.size_t(len(b))
 	return 0
 }
+
+//export cue_validate
+func cue_validate(v C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_error {
+	err := cueValue(v).Validate(options(opts, len)...)
+	if err != nil {
+		return cueErrorHandle(err)
+	}
+	return 0
+}
