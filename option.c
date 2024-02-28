@@ -15,6 +15,17 @@
 #include "cue.h"
 #include "option.h"
 
+size_t
+cue_eopt_len(cue_eopt *opts) {
+	size_t len = 0;
+
+	while(opts != NULL) {
+		opts++;
+		len++;
+	}
+	return len;
+}
+
 cue_eopt
 cue_all(void) {
 	cue_eopt o = (cue_eopt) {

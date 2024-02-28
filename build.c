@@ -15,6 +15,17 @@
 #include "cue.h"
 #include "build.h"
 
+size_t
+cue_bopt_len(cue_bopt *opts) {
+	size_t len = 0;
+
+	while(opts != NULL) {
+		opts++;
+		len++;
+	}
+	return len;
+}
+
 cue_bopt
 cue_filename(char *s) {
 	cue_bopt bo = (cue_bopt) {

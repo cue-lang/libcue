@@ -41,4 +41,6 @@ struct cue_eopt {
 	bool value;
 };
 
+size_t	cue_eopt_len(cue_eopt*);
+
 #endif // option_h

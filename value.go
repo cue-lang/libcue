@@ -27,15 +27,15 @@ import (
 	"cuelang.org/go/cue"
 )
 
-//export cue_compile_string
-func cue_compile_string(ctx C.cue_ctx, str *C.char, opts *C.struct_cue_bopt, len C.size_t) C.cue_value {
+//export cue_compile_string_raw
+func cue_compile_string_raw(ctx C.cue_ctx, str *C.char, opts *C.struct_cue_bopt, len C.size_t) C.cue_value {
 	bopts := buildOptions(opts, len)
 	val := cueContext(ctx).CompileString(C.GoString(str), bopts...)
 	return cueValueHandle(val)
 }
 
-//export cue_compile_bytes
-func cue_compile_bytes(ctx C.cue_ctx, buf unsafe.Pointer, bufLen C.size_t, opts *C.struct_cue_bopt, optLen C.size_t) C.cue_value {
+//export cue_compile_bytes_raw
+func cue_compile_bytes_raw(ctx C.cue_ctx, buf unsafe.Pointer, bufLen C.size_t, opts *C.struct_cue_bopt, optLen C.size_t) C.cue_value {
 	bopts := buildOptions(opts, optLen)
 	val := cueContext(ctx).CompileBytes(C.GoBytes(buf, C.int(bufLen)), bopts...)
 	return cueValueHandle(val)
@@ -59,8 +59,8 @@ func cue_unify(x C.cue_value, y C.cue_value) C.cue_value {
 	return cueValueHandle(u)
 }
 
-//export cue_instance_of
-func cue_instance_of(v C.cue_value, typ C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_error {
+//export cue_instance_of_raw
+func cue_instance_of_raw(v C.cue_value, typ C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_error {
 	err := cueValue(typ).Subsume(cueValue(v), options(opts, len)...)
 	return cueErrorHandle(err)
 }
@@ -184,8 +184,8 @@ func cue_dec_json(v C.cue_value, res *unsafe.Pointer, size *C.size_t) C.cue_erro
 	return 0
 }
 
-//export cue_validate
-func cue_validate(v C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_error {
+//export cue_validate_raw
+func cue_validate_raw(v C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_error {
 	err := cueValue(v).Validate(options(opts, len)...)
 	if err != nil {
 		return cueErrorHandle(err)

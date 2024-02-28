@@ -42,12 +42,12 @@ struct cue_attr_arg {
 
 cue_ctx	cue_newctx();
 
-cue_value	cue_compile_string(cue_ctx, char*, cue_bopt*, size_t);
-cue_value	cue_compile_bytes(cue_ctx, void*, size_t, cue_bopt*, size_t);
+cue_value	cue_compile_string(cue_ctx, char*, cue_bopt*);
+cue_value	cue_compile_bytes(cue_ctx, void*, size_t, cue_bopt*);
 cue_value	cue_top(cue_ctx);
 cue_value	cue_bottom(cue_ctx);
 cue_value	cue_unify(cue_value, cue_value);
-cue_error	cue_instance_of(cue_value, cue_value, cue_eopt*, size_t);
+cue_error	cue_instance_of(cue_value, cue_value, cue_eopt*);
 cue_error	cue_lookup_string(cue_value, char*, cue_value*);
 cue_value	cue_from_int64(cue_ctx, int64_t);
 cue_value	cue_from_uint64(cue_ctx, uint64_t);
@@ -62,7 +62,7 @@ cue_error	cue_dec_double(cue_value, double*);
 cue_error	cue_dec_string(cue_value, char**);
 cue_error	cue_dec_bytes(cue_value, void**, size_t*);
 cue_error	cue_dec_json(cue_value, void**, size_t*);
-cue_error	cue_validate(cue_value, cue_eopt*, size_t);
+cue_error	cue_validate(cue_value, cue_eopt*);
 cue_value	cue_default(cue_value, bool*);
 bool	cue_is_equal(cue_value, cue_value);
 

@@ -12,29 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef build_h
-#define build_h
-
-#include <stdbool.h>
 #include "cue.h"
+#include "build.h"
+#include "option.h"
+#include "_cgo_export.h"
 
-typedef enum build_option build_option;
-typedef struct cue_bopt cue_bopt;
+cue_value
+cue_compile_string(cue_ctx ctx, char *s, cue_bopt *opts) {
+	return cue_compile_string_raw(ctx, s, opts, cue_bopt_len(opts));
+}
 
-enum build_option {
-	BUILD_FILENAME,
-	BUILD_IMPORT_PATH,
-	BUILD_INFER_BUILTINS,
-	BUILD_SCOPE,
-};
+cue_value
+cue_compile_bytes(cue_ctx ctx, void *b, size_t len, cue_bopt *opts) {
+	return cue_compile_bytes_raw(ctx, b, len, opts, cue_bopt_len(opts));
+}
 
-struct cue_bopt {
-	build_option tag;
-	cue_value value;
-	char *str;
-	bool b;
-};
+cue_error
+cue_instance_of(cue_value x, cue_value y, cue_eopt *opts) {
+	return cue_instance_of_raw(x, y, opts, cue_eopt_len(opts));
+}
 
-size_t	cue_bopt_len(cue_bopt*);
-
-#endif // build_h
+cue_error
+cue_validate(cue_value v, cue_eopt *opts) {
+	return cue_validate_raw(v, opts, cue_eopt_len(opts));
+}
