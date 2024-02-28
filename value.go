@@ -202,3 +202,8 @@ func cue_default(v C.cue_value, res *C.bool) C.cue_value {
 	*res = C.bool(ok)
 	return cueValueHandle(def)
 }
+
+//export cue_is_equal
+func cue_is_equal(x C.cue_value, y C.cue_value) C.bool {
+	return C.bool(cueValue(x).Equals(cueValue(y)))
+}
