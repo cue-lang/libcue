@@ -34,3 +34,8 @@ func cue_ctx_free(ref C.uintptr_t) {
 func cue_value_free(ref C.uintptr_t) {
 	cgo.Handle(ref).Delete()
 }
+
+//export cue_error_free
+func cue_error_free(ref C.uintptr_t) {
+	cgo.Handle(ref).Delete()
+}

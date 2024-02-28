@@ -42,3 +42,11 @@ func cueValue(x C.cue_value) cue.Value {
 func cueValueHandle(v cue.Value) C.cue_value {
 	return C.cue_value(cgo.NewHandle(v))
 }
+
+func cueError(x C.cue_error) error {
+	return cgo.Handle(x).Value().(error)
+}
+
+func cueErrorHandle(err error) C.cue_error {
+	return C.cue_value(cgo.NewHandle(err))
+}

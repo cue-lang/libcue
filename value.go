@@ -56,3 +56,9 @@ func cue_unify(x C.cue_value, y C.cue_value) C.cue_value {
 	u := cueValue(x).Unify(cueValue(y))
 	return cueValueHandle(u)
 }
+
+//export cue_instance_of
+func cue_instance_of(val C.cue_value, typ C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_error {
+	err := cueValue(typ).Subsume(cueValue(val), options(opts, len)...)
+	return cueErrorHandle(err)
+}

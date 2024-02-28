@@ -47,7 +47,7 @@ cue_value	cue_compile_bytes(cue_ctx, void*, size_t, cue_bopt*, size_t);
 cue_value	cue_top(cue_ctx);
 cue_value	cue_bottom(cue_ctx);
 cue_value	cue_unify(cue_value, cue_value);
-cue_error	cue_instance_of(cue_value, cue_value);
+cue_error	cue_instance_of(cue_value, cue_value, cue_eopt*, size_t);
 cue_error	cue_lookup_string(cue_value, char*, cue_value*);
 cue_value	cue_from_int64(cue_ctx, int64_t);
 cue_value	cue_from_uint64(cue_ctx, uint64_t);
