@@ -38,3 +38,15 @@ func cue_compile_bytes(ctx C.cue_ctx, buf unsafe.Pointer, bufLen C.size_t, opts 
 	val := cueContext(ctx).CompileBytes(C.GoBytes(buf, C.int(bufLen)), bopts...)
 	return cueValueHandle(val)
 }
+
+// export cue_top
+func cue_top(ctx C.cue_ctx) C.cue_value {
+	val := cueContext(ctx).CompileString("_")
+	return cueValueHandle(val)
+}
+
+// export cue_bottom
+func cue_bottom(ctx C.cue_ctx) C.cue_value {
+	val := cueContext(ctx).CompileString("_|_")
+	return cueValueHandle(val)
+}
