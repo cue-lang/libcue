@@ -15,7 +15,7 @@
 #ifndef cue_h
 #define cue_h
 
-#include <sys/types.h>
+#include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
 
