@@ -23,6 +23,8 @@ import "C"
 
 import (
 	"unsafe"
+
+	"cuelang.org/go/cue"
 )
 
 //export cue_compile_string
@@ -58,7 +60,18 @@ func cue_unify(x C.cue_value, y C.cue_value) C.cue_value {
 }
 
 //export cue_instance_of
-func cue_instance_of(val C.cue_value, typ C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_error {
-	err := cueValue(typ).Subsume(cueValue(val), options(opts, len)...)
+func cue_instance_of(v C.cue_value, typ C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_error {
+	err := cueValue(typ).Subsume(cueValue(v), options(opts, len)...)
 	return cueErrorHandle(err)
+}
+
+//export cue_lookup_string
+func cue_lookup_string(v C.cue_value, str *C.char, res *C.cue_value) C.cue_error {
+	path := cue.ParsePath(C.GoString(str))
+	target := cueValue(v).LookupPath(path)
+	if err := target.Err(); err != nil {
+		return cueErrorHandle(err)
+	}
+	*res = cueValueHandle(target)
+	return 0
 }
