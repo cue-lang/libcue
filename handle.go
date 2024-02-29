@@ -23,7 +23,6 @@ import "C"
 
 import (
 	"runtime/cgo"
-	"unsafe"
 
 	"cuelang.org/go/cue"
 )
@@ -58,20 +57,4 @@ func cueAttr(x C.cue_attr) cue.Attribute {
 
 func cueAttrHandle(a cue.Attribute) C.cue_attr {
 	return C.cue_value(cgo.NewHandle(a))
-}
-
-//export cue_free
-func cue_free(ref C.uintptr_t) {
-	cgo.Handle(ref).Delete()
-}
-
-func calloc[T any](n int, size int) ([]T, *T) {
-	ptr := (*T)(C.malloc(C.size_t(n * size)))
-	s := unsafe.Slice(ptr, n)
-
-	for i := 0; i < n; i++ {
-		var zero T
-		s[i] = zero
-	}
-	return s, ptr
 }

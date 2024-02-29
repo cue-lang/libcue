@@ -91,5 +91,6 @@ char*	cue_attr_name(cue_attr);
 char*	cue_attr_value(cue_attr);
 
 void	cue_free(uintptr_t);
+void	cue_free_all(uintptr_t*);
 
 #endif // cue_h
