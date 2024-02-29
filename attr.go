@@ -49,3 +49,15 @@ func cue_attrs(v C.cue_value, kind C.cue_attr_kind) *C.cue_attr {
 	}
 	return ptr
 }
+
+//export cue_attr_name
+func cue_attr_name(a C.cue_attr) *C.char {
+	attr := cueAttr(a)
+	return C.CString(attr.Name())
+}
+
+//export cue_attr_value
+func cue_attr_value(a C.cue_attr) *C.char {
+	attr := cueAttr(a)
+	return C.CString(attr.Contents())
+}
