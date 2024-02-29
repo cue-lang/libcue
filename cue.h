@@ -40,6 +40,10 @@ struct cue_attr_arg {
 	char *key, *val;
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 cue_ctx	cue_newctx();
 
 cue_value	cue_compile_string(cue_ctx, char*, cue_bopt*);
@@ -92,5 +96,9 @@ char*	cue_attr_value(cue_attr);
 
 void	cue_free(uintptr_t);
 void	cue_free_all(uintptr_t*);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // cue_h
