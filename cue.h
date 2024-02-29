@@ -28,7 +28,7 @@ typedef struct cue_eopt cue_eopt;
 typedef struct cue_attr_arg cue_attr_arg;
 
 typedef enum cue_attr_kind cue_attr_kind;
-typedef enum cue_res cue_res;
+typedef enum CUE_KIND CUE_KIND;
 
 enum cue_attr_kind {
 	CUE_ATTR_FIELD = 1<<0,
@@ -38,6 +38,20 @@ enum cue_attr_kind {
 
 struct cue_attr_arg {
 	char *key, *val;
+};
+
+enum CUE_KIND {
+	CUE_KIND_BOTTOM,
+	CUE_KIND_NULL,
+	CUE_KIND_BOOL,
+	CUE_KIND_INT,
+	CUE_KIND_FLOAT,
+	CUE_KIND_STRING,
+	CUE_KIND_BYTES,
+	CUE_KIND_STRUCT,
+	CUE_KIND_LIST,
+	CUE_KIND_NUMBER,
+	CUE_KIND_TOP,
 };
 
 #ifdef __cplusplus
@@ -68,6 +82,8 @@ cue_error	cue_dec_bytes(cue_value, void**, size_t*);
 cue_error	cue_dec_json(cue_value, void**, size_t*);
 cue_error	cue_validate(cue_value, cue_eopt*);
 cue_value	cue_default(cue_value, bool*);
+CUE_KIND	cue_kind(cue_value);
+CUE_KIND	cue_incomplete_kind(cue_value);
 bool	cue_is_equal(cue_value, cue_value);
 
 cue_bopt	cue_filename(char*);

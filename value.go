@@ -207,3 +207,61 @@ func cue_default(v C.cue_value, res *C.bool) C.cue_value {
 func cue_is_equal(x C.cue_value, y C.cue_value) C.bool {
 	return C.bool(cueValue(x).Equals(cueValue(y)))
 }
+
+//export cue_kind
+func cue_kind(v C.cue_value) C.CUE_KIND {
+	switch cueValue(v).Kind() {
+	case cue.BottomKind:
+		return C.CUE_KIND_BOTTOM
+	case cue.NullKind:
+		return C.CUE_KIND_NULL
+	case cue.BoolKind:
+		return C.CUE_KIND_BOOL
+	case cue.IntKind:
+		return C.CUE_KIND_INT
+	case cue.FloatKind:
+		return C.CUE_KIND_FLOAT
+	case cue.StringKind:
+		return C.CUE_KIND_STRING
+	case cue.BytesKind:
+		return C.CUE_KIND_BYTES
+	case cue.StructKind:
+		return C.CUE_KIND_STRUCT
+	case cue.ListKind:
+		return C.CUE_KIND_LIST
+	case cue.NumberKind:
+		return C.CUE_KIND_NUMBER
+	case cue.TopKind:
+		return C.CUE_KIND_TOP
+	}
+	panic("unreachable")
+}
+
+//export cue_incomplete_kind
+func cue_incomplete_kind(v C.cue_value) C.CUE_KIND {
+	switch cueValue(v).IncompleteKind() {
+	case cue.BottomKind:
+		return C.CUE_KIND_BOTTOM
+	case cue.NullKind:
+		return C.CUE_KIND_NULL
+	case cue.BoolKind:
+		return C.CUE_KIND_BOOL
+	case cue.IntKind:
+		return C.CUE_KIND_INT
+	case cue.FloatKind:
+		return C.CUE_KIND_FLOAT
+	case cue.StringKind:
+		return C.CUE_KIND_STRING
+	case cue.BytesKind:
+		return C.CUE_KIND_BYTES
+	case cue.StructKind:
+		return C.CUE_KIND_STRUCT
+	case cue.ListKind:
+		return C.CUE_KIND_LIST
+	case cue.NumberKind:
+		return C.CUE_KIND_NUMBER
+	case cue.TopKind:
+		return C.CUE_KIND_TOP
+	}
+	panic("unreachable")
+}
