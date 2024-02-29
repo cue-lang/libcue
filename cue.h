@@ -86,7 +86,7 @@ cue_eopt	cue_raw(void);
 cue_eopt	cue_schema(void);
 
 cue_attr_arg*	cue_attr_args(cue_attr);
-cue_attr*	cue_attrs(cue_value);
+cue_attr*	cue_attrs(cue_value, cue_attr_kind);
 char*	cue_attr_name(cue_attr);
 char*	cue_attr_value(cue_attr);
 
