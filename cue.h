@@ -58,7 +58,7 @@ enum CUE_KIND {
 extern "C" {
 #endif
 
-cue_ctx	cue_newctx();
+cue_ctx	cue_newctx(void);
 
 cue_value	cue_compile_string(cue_ctx, char*, cue_bopt*);
 cue_value	cue_compile_bytes(cue_ctx, void*, size_t, cue_bopt*);
