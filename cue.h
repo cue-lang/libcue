@@ -26,7 +26,8 @@ typedef uintptr_t cue_attr;
 typedef struct cue_bopt cue_bopt;
 typedef struct cue_eopt cue_eopt;
 typedef struct cue_attr_arg cue_attr_arg;
-
+typedef enum eval_option eval_option;
+typedef enum build_option build_option;
 typedef enum cue_attr_kind cue_attr_kind;
 typedef enum CUE_KIND CUE_KIND;
 
@@ -52,6 +53,43 @@ enum CUE_KIND {
 	CUE_KIND_LIST,
 	CUE_KIND_NUMBER,
 	CUE_KIND_TOP,
+};
+
+enum eval_option {
+	OPT_NONE,
+	OPT_ALL,
+	OPT_ATTR,
+	OPT_CONCRETE,
+	OPT_DEFS,
+	OPT_DISALLOW_CYCLES,
+	OPT_DOCS,
+	OPT_ERRORS_AS_VALUES,
+	OPT_FINAL,
+	OPT_HIDDEN,
+	OPT_INLINE_IMPORTS,
+	OPT_OPTIONALS,
+	OPT_RAW,
+	OPT_SCHEMA,
+};
+
+struct cue_eopt {
+	eval_option tag;
+	bool value;
+};
+
+enum build_option {
+	BUILD_NONE,
+	BUILD_FILENAME,
+	BUILD_IMPORT_PATH,
+	BUILD_INFER_BUILTINS,
+	BUILD_SCOPE,
+};
+
+struct cue_bopt {
+	build_option tag;
+	cue_value value;
+	char *str;
+	bool b;
 };
 
 #ifdef __cplusplus

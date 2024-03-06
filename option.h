@@ -15,33 +15,6 @@
 #ifndef option_h
 #define option_h
 
-#include <stdbool.h>
-
-typedef enum option option;
-typedef struct cue_eopt cue_eopt;
-
-enum option {
-	OPT_NONE,
-	OPT_ALL,
-	OPT_ATTR,
-	OPT_CONCRETE,
-	OPT_DEFS,
-	OPT_DISALLOW_CYCLES,
-	OPT_DOCS,
-	OPT_ERRORS_AS_VALUES,
-	OPT_FINAL,
-	OPT_HIDDEN,
-	OPT_INLINE_IMPORTS,
-	OPT_OPTIONALS,
-	OPT_RAW,
-	OPT_SCHEMA,
-};
-
-struct cue_eopt {
-	option tag;
-	bool value;
-};
-
 size_t	cue_eopt_len(cue_eopt*);
 
 #endif // option_h

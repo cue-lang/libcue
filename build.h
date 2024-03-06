@@ -18,24 +18,6 @@
 #include <stdbool.h>
 #include "cue.h"
 
-typedef enum build_option build_option;
-typedef struct cue_bopt cue_bopt;
-
-enum build_option {
-	BUILD_NONE,
-	BUILD_FILENAME,
-	BUILD_IMPORT_PATH,
-	BUILD_INFER_BUILTINS,
-	BUILD_SCOPE,
-};
-
-struct cue_bopt {
-	build_option tag;
-	cue_value value;
-	char *str;
-	bool b;
-};
-
 size_t	cue_bopt_len(cue_bopt*);
 
 #endif // build_h
