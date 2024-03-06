@@ -19,7 +19,7 @@ size_t
 cue_bopt_len(cue_bopt *opts) {
 	size_t len = 0;
 
-	while(opts->tag != BUILD_NONE) {
+	while(opts->tag != CUE_BUILD_NONE) {
 		opts++;
 		len++;
 	}
@@ -29,7 +29,7 @@ cue_bopt_len(cue_bopt *opts) {
 cue_bopt
 cue_filename(char *s) {
 	cue_bopt bo = (cue_bopt) {
-		.tag = BUILD_FILENAME,
+		.tag = CUE_BUILD_FILENAME,
 		.str = s,
 	};
 
@@ -39,7 +39,7 @@ cue_filename(char *s) {
 cue_bopt
 cue_import_path(char *s) {
 	cue_bopt bo = (cue_bopt) {
-		.tag = BUILD_IMPORT_PATH,
+		.tag = CUE_BUILD_IMPORT_PATH,
 		.str = s,
 	};
 
@@ -49,7 +49,7 @@ cue_import_path(char *s) {
 cue_bopt
 cue_infer_builtins(bool b) {
 	cue_bopt bo = (cue_bopt) {
-		.tag = BUILD_INFER_BUILTINS,
+		.tag = CUE_BUILD_INFER_BUILTINS,
 		.b = b,
 	};
 
@@ -59,7 +59,7 @@ cue_infer_builtins(bool b) {
 cue_bopt
 cue_scope(cue_value v) {
 	cue_bopt bo = (cue_bopt) {
-		.tag = BUILD_SCOPE,
+		.tag = CUE_BUILD_SCOPE,
 		.value = v,
 	};
 

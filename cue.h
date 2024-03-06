@@ -26,8 +26,8 @@ typedef uintptr_t cue_attr;
 typedef struct cue_bopt cue_bopt;
 typedef struct cue_eopt cue_eopt;
 typedef struct cue_attr_arg cue_attr_arg;
-typedef enum eval_option eval_option;
-typedef enum build_option build_option;
+typedef enum cue_eopt_tag cue_eopt_tag;
+typedef enum cue_bopt_tag cue_bopt_tag;
 typedef enum cue_attr_kind cue_attr_kind;
 typedef enum cue_kind cue_kind;
 
@@ -55,38 +55,38 @@ enum cue_kind {
 	CUE_KIND_TOP,
 };
 
-enum eval_option {
-	OPT_NONE,
-	OPT_ALL,
-	OPT_ATTR,
-	OPT_CONCRETE,
-	OPT_DEFS,
-	OPT_DISALLOW_CYCLES,
-	OPT_DOCS,
-	OPT_ERRORS_AS_VALUES,
-	OPT_FINAL,
-	OPT_HIDDEN,
-	OPT_INLINE_IMPORTS,
-	OPT_OPTIONALS,
-	OPT_RAW,
-	OPT_SCHEMA,
+enum cue_eopt_tag {
+	CUE_OPT_NONE,
+	CUE_OPT_ALL,
+	CUE_OPT_ATTR,
+	CUE_OPT_CONCRETE,
+	CUE_OPT_DEFS,
+	CUE_OPT_DISALLOW_CYCLES,
+	CUE_OPT_DOCS,
+	CUE_OPT_ERRORS_AS_VALUES,
+	CUE_OPT_FINAL,
+	CUE_OPT_HIDDEN,
+	CUE_OPT_INLINE_IMPORTS,
+	CUE_OPT_OPTIONALS,
+	CUE_OPT_RAW,
+	CUE_OPT_SCHEMA,
 };
 
 struct cue_eopt {
-	eval_option tag;
+	cue_eopt_tag tag;
 	bool value;
 };
 
-enum build_option {
-	BUILD_NONE,
-	BUILD_FILENAME,
-	BUILD_IMPORT_PATH,
-	BUILD_INFER_BUILTINS,
-	BUILD_SCOPE,
+enum cue_bopt_tag {
+	CUE_BUILD_NONE,
+	CUE_BUILD_FILENAME,
+	CUE_BUILD_IMPORT_PATH,
+	CUE_BUILD_INFER_BUILTINS,
+	CUE_BUILD_SCOPE,
 };
 
 struct cue_bopt {
-	build_option tag;
+	cue_bopt_tag tag;
 	cue_value value;
 	char *str;
 	bool b;

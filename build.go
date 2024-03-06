@@ -35,13 +35,13 @@ func buildOptions(opts *C.struct_cue_bopt, len C.size_t) []cue.BuildOption {
 
 func buildOption(opt C.struct_cue_bopt) cue.BuildOption {
 	switch opt.tag {
-	case C.BUILD_FILENAME:
+	case C.CUE_BUILD_FILENAME:
 		return cue.Filename(C.GoString(opt.str))
-	case C.BUILD_IMPORT_PATH:
+	case C.CUE_BUILD_IMPORT_PATH:
 		return cue.ImportPath(C.GoString(opt.str))
-	case C.BUILD_INFER_BUILTINS:
+	case C.CUE_BUILD_INFER_BUILTINS:
 		return cue.InferBuiltins(bool(opt.b))
-	case C.BUILD_SCOPE:
+	case C.CUE_BUILD_SCOPE:
 		panic("TODO")
 	}
 	panic("unreachable")

@@ -36,31 +36,31 @@ func options(opts *C.struct_cue_eopt, len C.size_t) []cue.Option {
 
 func option(opt C.struct_cue_eopt) cue.Option {
 	switch opt.tag {
-	case C.OPT_ALL:
+	case C.CUE_OPT_ALL:
 		return cue.All()
-	case C.OPT_ATTR:
+	case C.CUE_OPT_ATTR:
 		return cue.Attributes(bool(opt.value))
-	case C.OPT_CONCRETE:
+	case C.CUE_OPT_CONCRETE:
 		return cue.Concrete(bool(opt.value))
-	case C.OPT_DEFS:
+	case C.CUE_OPT_DEFS:
 		return cue.Definitions(bool(opt.value))
-	case C.OPT_DISALLOW_CYCLES:
+	case C.CUE_OPT_DISALLOW_CYCLES:
 		return cue.DisallowCycles(bool(opt.value))
-	case C.OPT_DOCS:
+	case C.CUE_OPT_DOCS:
 		return cue.Docs(bool(opt.value))
-	case C.OPT_ERRORS_AS_VALUES:
+	case C.CUE_OPT_ERRORS_AS_VALUES:
 		return cue.ErrorsAsValues(bool(opt.value))
-	case C.OPT_FINAL:
+	case C.CUE_OPT_FINAL:
 		return cue.Final()
-	case C.OPT_HIDDEN:
+	case C.CUE_OPT_HIDDEN:
 		return cue.Hidden(bool(opt.value))
-	case C.OPT_INLINE_IMPORTS:
+	case C.CUE_OPT_INLINE_IMPORTS:
 		return cue.InlineImports(bool(opt.value))
-	case C.OPT_OPTIONALS:
+	case C.CUE_OPT_OPTIONALS:
 		return cue.Optional(bool(opt.value))
-	case C.OPT_RAW:
+	case C.CUE_OPT_RAW:
 		return cue.Raw()
-	case C.OPT_SCHEMA:
+	case C.CUE_OPT_SCHEMA:
 		return cue.Schema()
 	}
 	panic("unreachable")

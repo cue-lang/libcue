@@ -19,7 +19,7 @@ size_t
 cue_eopt_len(cue_eopt *opts) {
 	size_t len = 0;
 
-	while(opts->tag != OPT_NONE) {
+	while(opts->tag != CUE_OPT_NONE) {
 		opts++;
 		len++;
 	}
@@ -29,7 +29,7 @@ cue_eopt_len(cue_eopt *opts) {
 cue_eopt
 cue_all(void) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_ALL,
+		.tag = CUE_OPT_ALL,
 	};
 
 	return o;
@@ -38,7 +38,7 @@ cue_all(void) {
 cue_eopt
 cue_attributes(bool b) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_ATTR,
+		.tag = CUE_OPT_ATTR,
 		.value = b,
 	};
 
@@ -48,7 +48,7 @@ cue_attributes(bool b) {
 cue_eopt
 cue_concrete(bool b) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_CONCRETE,
+		.tag = CUE_OPT_CONCRETE,
 		.value = b,
 	};
 
@@ -58,7 +58,7 @@ cue_concrete(bool b) {
 cue_eopt
 cue_definitions(bool b) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_DEFS,
+		.tag = CUE_OPT_DEFS,
 		.value = b,
 	};
 
@@ -68,7 +68,7 @@ cue_definitions(bool b) {
 cue_eopt
 cue_disallow_cycles(bool b) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_DISALLOW_CYCLES,
+		.tag = CUE_OPT_DISALLOW_CYCLES,
 		.value = b,
 	};
 
@@ -78,7 +78,7 @@ cue_disallow_cycles(bool b) {
 cue_eopt
 cue_docs(bool b) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_DOCS,
+		.tag = CUE_OPT_DOCS,
 		.value = b,
 	};
 
@@ -88,7 +88,7 @@ cue_docs(bool b) {
 cue_eopt
 cue_errors_as_values(bool b) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_ERRORS_AS_VALUES,
+		.tag = CUE_OPT_ERRORS_AS_VALUES,
 		.value = b,
 	};
 
@@ -98,7 +98,7 @@ cue_errors_as_values(bool b) {
 cue_eopt
 cue_final(void) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_FINAL,
+		.tag = CUE_OPT_FINAL,
 	};
 
 	return o;
@@ -107,7 +107,7 @@ cue_final(void) {
 cue_eopt
 cue_hidden(bool b) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_HIDDEN,
+		.tag = CUE_OPT_HIDDEN,
 		.value = b,
 	};
 
@@ -117,7 +117,7 @@ cue_hidden(bool b) {
 cue_eopt
 cue_inline_imports(bool b) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_INLINE_IMPORTS,
+		.tag = CUE_OPT_INLINE_IMPORTS,
 		.value = b,
 	};
 
@@ -127,7 +127,7 @@ cue_inline_imports(bool b) {
 cue_eopt
 cue_optionals(bool b) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_OPTIONALS,
+		.tag = CUE_OPT_OPTIONALS,
 		.value = b,
 	};
 
@@ -137,7 +137,7 @@ cue_optionals(bool b) {
 cue_eopt
 cue_raw(void) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_RAW,
+		.tag = CUE_OPT_RAW,
 	};
 
 	return o;
@@ -146,7 +146,7 @@ cue_raw(void) {
 cue_eopt
 cue_schema(void) {
 	cue_eopt o = (cue_eopt) {
-		.tag = OPT_SCHEMA,
+		.tag = CUE_OPT_SCHEMA,
 	};
 
 	return o;
