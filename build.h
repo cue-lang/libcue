@@ -22,6 +22,7 @@ typedef enum build_option build_option;
 typedef struct cue_bopt cue_bopt;
 
 enum build_option {
+	BUILD_NONE,
 	BUILD_FILENAME,
 	BUILD_IMPORT_PATH,
 	BUILD_INFER_BUILTINS,

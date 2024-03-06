@@ -21,6 +21,7 @@ typedef enum option option;
 typedef struct cue_eopt cue_eopt;
 
 enum option {
+	OPT_NONE,
 	OPT_ALL,
 	OPT_ATTR,
 	OPT_CONCRETE,

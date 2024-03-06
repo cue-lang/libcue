@@ -19,7 +19,7 @@ size_t
 cue_eopt_len(cue_eopt *opts) {
 	size_t len = 0;
 
-	while(opts != NULL) {
+	while(opts->tag != OPT_NONE) {
 		opts++;
 		len++;
 	}
