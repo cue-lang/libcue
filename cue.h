@@ -29,7 +29,7 @@ typedef struct cue_attr_arg cue_attr_arg;
 typedef enum eval_option eval_option;
 typedef enum build_option build_option;
 typedef enum cue_attr_kind cue_attr_kind;
-typedef enum CUE_KIND CUE_KIND;
+typedef enum cue_kind cue_kind;
 
 enum cue_attr_kind {
 	CUE_ATTR_FIELD = 1<<0,
@@ -41,7 +41,7 @@ struct cue_attr_arg {
 	char *key, *val;
 };
 
-enum CUE_KIND {
+enum cue_kind {
 	CUE_KIND_BOTTOM,
 	CUE_KIND_NULL,
 	CUE_KIND_BOOL,
@@ -120,8 +120,8 @@ cue_error	cue_dec_bytes(cue_value, void**, size_t*);
 cue_error	cue_dec_json(cue_value, void**, size_t*);
 cue_error	cue_validate(cue_value, cue_eopt*);
 cue_value	cue_default(cue_value, bool*);
-CUE_KIND	cue_kind(cue_value);
-CUE_KIND	cue_incomplete_kind(cue_value);
+cue_kind	cue_concrete_kind(cue_value);
+cue_kind	cue_incomplete_kind(cue_value);
 bool	cue_is_equal(cue_value, cue_value);
 
 cue_bopt	cue_filename(char*);

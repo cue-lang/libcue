@@ -208,8 +208,8 @@ func cue_is_equal(x C.cue_value, y C.cue_value) C.bool {
 	return C.bool(cueValue(x).Equals(cueValue(y)))
 }
 
-//export cue_kind
-func cue_kind(v C.cue_value) C.CUE_KIND {
+//export cue_concrete_kind
+func cue_concrete_kind(v C.cue_value) C.cue_kind {
 	switch cueValue(v).Kind() {
 	case cue.BottomKind:
 		return C.CUE_KIND_BOTTOM
@@ -238,7 +238,7 @@ func cue_kind(v C.cue_value) C.CUE_KIND {
 }
 
 //export cue_incomplete_kind
-func cue_incomplete_kind(v C.cue_value) C.CUE_KIND {
+func cue_incomplete_kind(v C.cue_value) C.cue_kind {
 	switch cueValue(v).IncompleteKind() {
 	case cue.BottomKind:
 		return C.CUE_KIND_BOTTOM
