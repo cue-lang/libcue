@@ -25,7 +25,7 @@ import (
 	"cuelang.org/go/cue/cuecontext"
 )
 
-//export cue_newctxt
-func cue_newctxt() C.cue_ctx {
+//export cue_newctx
+func cue_newctx() C.cue_ctx {
 	return cueContextHandle(cuecontext.New())
 }
