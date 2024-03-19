@@ -21,6 +21,10 @@ size_t
 cue_cgo_handle_slice_len(uintptr_t *p) {
 	size_t len = 0;
 
+	if (p == NULL) {
+		return 0;
+	}
+
 	while(*p != 0) {
 		p++;
 		len++;

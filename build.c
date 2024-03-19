@@ -19,6 +19,10 @@ size_t
 cue_bopt_len(cue_bopt *opts) {
 	size_t len = 0;
 
+	if (opts == NULL) {
+		return 0;
+	}
+
 	while(opts->tag != CUE_BUILD_NONE) {
 		opts++;
 		len++;
