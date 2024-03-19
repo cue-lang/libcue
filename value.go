@@ -28,17 +28,27 @@ import (
 )
 
 //export cue_compile_string_raw
-func cue_compile_string_raw(ctx C.cue_ctx, str *C.char, opts *C.struct_cue_bopt, len C.size_t) C.cue_value {
+func cue_compile_string_raw(ctx C.cue_ctx, str *C.char, opts *C.struct_cue_bopt, len C.size_t, v *C.cue_value) C.cue_error {
 	bopts := buildOptions(opts, len)
 	val := cueContext(ctx).CompileString(C.GoString(str), bopts...)
-	return cueValueHandle(val)
+
+	if err := val.Err(); err != nil {
+		return cueErrorHandle(err)
+	}
+	*v = cueValueHandle(val)
+	return 0
 }
 
 //export cue_compile_bytes_raw
-func cue_compile_bytes_raw(ctx C.cue_ctx, buf unsafe.Pointer, bufLen C.size_t, opts *C.struct_cue_bopt, optLen C.size_t) C.cue_value {
+func cue_compile_bytes_raw(ctx C.cue_ctx, buf unsafe.Pointer, bufLen C.size_t, opts *C.struct_cue_bopt, optLen C.size_t, v *C.cue_value) C.cue_error {
 	bopts := buildOptions(opts, optLen)
 	val := cueContext(ctx).CompileBytes(C.GoBytes(buf, C.int(bufLen)), bopts...)
-	return cueValueHandle(val)
+
+	if err := val.Err(); err != nil {
+		return cueErrorHandle(err)
+	}
+	*v = cueValueHandle(val)
+	return 0
 }
 
 //export cue_top

@@ -17,14 +17,14 @@
 #include "option.h"
 #include "_cgo_export.h"
 
-cue_value
-cue_compile_string(cue_ctx ctx, char *s, cue_bopt *opts) {
-	return cue_compile_string_raw(ctx, s, opts, cue_bopt_len(opts));
+cue_error
+cue_compile_string(cue_ctx ctx, char *s, cue_bopt *opts, cue_value *v) {
+	return cue_compile_string_raw(ctx, s, opts, cue_bopt_len(opts), v);
 }
 
-cue_value
-cue_compile_bytes(cue_ctx ctx, void *b, size_t len, cue_bopt *opts) {
-	return cue_compile_bytes_raw(ctx, b, len, opts, cue_bopt_len(opts));
+cue_error
+cue_compile_bytes(cue_ctx ctx, void *b, size_t len, cue_bopt *opts, cue_value *v) {
+	return cue_compile_bytes_raw(ctx, b, len, opts, cue_bopt_len(opts), v);
 }
 
 cue_error
