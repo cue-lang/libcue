@@ -36,7 +36,7 @@ func attrKind(kind C.cue_attr_kind) cue.AttrKind {
 	panic("unreachable")
 }
 
-// export cue_attrs
+//export cue_attrs
 func cue_attrs(v C.cue_value, kind C.cue_attr_kind) *C.cue_attr {
 	attrs := cueValue(v).Attributes(attrKind(kind))
 	if len(attrs) == 0 {

@@ -19,7 +19,7 @@ package main
 */
 import "C"
 
-// export cue_error_string
+//export cue_error_string
 func cue_error_string(e C.cue_error) *C.char {
 	err := cueError(e)
 	return C.CString(err.Error())
