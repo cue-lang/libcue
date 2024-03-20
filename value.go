@@ -72,7 +72,10 @@ func cue_unify(x C.cue_value, y C.cue_value) C.cue_value {
 //export cue_instance_of_raw
 func cue_instance_of_raw(v C.cue_value, typ C.cue_value, opts *C.struct_cue_eopt, len C.size_t) C.cue_error {
 	err := cueValue(typ).Subsume(cueValue(v), options(opts, len)...)
-	return cueErrorHandle(err)
+	if err != nil {
+		return cueErrorHandle(err)
+	}
+	return 0
 }
 
 //export cue_lookup_string
