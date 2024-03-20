@@ -123,6 +123,7 @@ cue_error	cue_validate(cue_value, cue_eopt*);
 cue_value	cue_default(cue_value, bool*);
 cue_kind	cue_concrete_kind(cue_value);
 cue_kind	cue_incomplete_kind(cue_value);
+cue_error	cue_value_error(cue_value);
 bool	cue_is_equal(cue_value, cue_value);
 
 cue_bopt	cue_filename(char*);
@@ -151,6 +152,7 @@ char*	cue_attr_value(cue_attr);
 
 void	cue_free(uintptr_t);
 void	cue_free_all(uintptr_t*);
+void	libc_free(void*);
 
 #ifdef __cplusplus
 }

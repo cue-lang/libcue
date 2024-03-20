@@ -275,3 +275,11 @@ func cue_incomplete_kind(v C.cue_value) C.cue_kind {
 	}
 	panic("unreachable")
 }
+
+//export cue_value_error
+func cue_value_error(v C.cue_value) C.cue_error {
+	if err := cueValue(v).Err(); err != nil {
+		return cueErrorHandle(err)
+	}
+	return 0
+}

@@ -37,3 +37,8 @@ cue_free_all(uintptr_t *p) {
 	cue_free_all_inner_raw(p, cue_cgo_handle_slice_len(p));
 	free(p);
 }
+
+void
+libc_free(void *p) {
+	free(p);
+}
