@@ -42,7 +42,7 @@ func buildOption(opt C.struct_cue_bopt) cue.BuildOption {
 	case C.CUE_BUILD_INFER_BUILTINS:
 		return cue.InferBuiltins(bool(opt.b))
 	case C.CUE_BUILD_SCOPE:
-		panic("TODO")
+		return cue.Scope(cueValue(opt.value))
 	}
 	panic("unreachable")
 }
