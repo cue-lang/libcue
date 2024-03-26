@@ -145,10 +145,11 @@ cue_eopt	cue_optionals(bool);
 cue_eopt	cue_raw(void);
 cue_eopt	cue_schema(void);
 
-cue_attr_arg*	cue_attr_args(cue_attr);
-cue_attr*	cue_attrs(cue_value, cue_attr_kind);
+cue_attr*	cue_attrs(cue_value, cue_attr_kind, size_t*);
 char*	cue_attr_name(cue_attr);
 char*	cue_attr_value(cue_attr);
+size_t	cue_attr_numargs(cue_attr);
+void	cue_attr_getarg(cue_attr, size_t, cue_attr_arg*);
 
 void	cue_free(uintptr_t);
 void	cue_free_all(uintptr_t*);

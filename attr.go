@@ -37,13 +37,14 @@ func attrKind(kind C.cue_attr_kind) cue.AttrKind {
 }
 
 //export cue_attrs
-func cue_attrs(v C.cue_value, kind C.cue_attr_kind) *C.cue_attr {
+func cue_attrs(v C.cue_value, kind C.cue_attr_kind, count *C.size_t) *C.cue_attr {
 	attrs := cueValue(v).Attributes(attrKind(kind))
+	*count = C.size_t(len(attrs))
 	if len(attrs) == 0 {
 		return nil
 	}
 
-	s, ptr := calloc[C.cue_attr](len(attrs)+1, C.sizeof_cue_attr)
+	s, ptr := calloc[C.cue_attr](len(attrs), C.sizeof_cue_attr)
 	for i, a := range attrs {
 		s[i] = cueAttrHandle(a)
 	}
@@ -60,4 +61,19 @@ func cue_attr_name(a C.cue_attr) *C.char {
 func cue_attr_value(a C.cue_attr) *C.char {
 	attr := cueAttr(a)
 	return C.CString(attr.Contents())
+}
+
+//export cue_attr_numargs
+func cue_attr_numargs(a C.cue_attr) C.size_t {
+	attr := cueAttr(a)
+	return C.size_t(attr.NumArgs())
+}
+
+//export cue_attr_getarg
+func cue_attr_getarg(a C.cue_attr, n C.size_t, arg *C.cue_attr_arg) {
+	attr := cueAttr(a)
+	k, v := attr.Arg(int(n))
+	arg.key = C.CString(k)
+	arg.val = C.CString(v)
+	return
 }
