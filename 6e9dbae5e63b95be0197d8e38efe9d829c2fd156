@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "865f0dbc_9ad28627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020333
+      },
+      "writtenOn": "2024-04-02T14:57:01Z",
+      "side": 1,
+      "message": "Approving on behalf of myitcv to get CI up and running",
+      "revId": "6e9dbae5e63b95be0197d8e38efe9d829c2fd156",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
