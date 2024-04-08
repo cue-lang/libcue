@@ -1,4 +1,4 @@
-module cuelang.org/c/cue
+module github.com/cue-lang/libcue
 
 go 1.22.0
 
