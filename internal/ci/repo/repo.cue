@@ -18,4 +18,4 @@ defaultBranch: "main"
 
 linuxMachine: "ubuntu-22.04"
 
-latestGo: "1.21.x"
+latestGo: "1.23.x"
