@@ -19,6 +19,7 @@ import (
 	"encoding/yaml"
 	"tool/file"
 
+	"cuelang.org/c/cue/internal/ci/base"
 	"cuelang.org/c/cue/internal/ci/repo"
 	"cuelang.org/c/cue/internal/ci/github"
 )
@@ -27,7 +28,7 @@ import (
 // than anything that might derive the module root using go list or similar, in
 // order that we have zero dependencies.  This is important because this CUE
 // package is "vendored" to an external dependency so that that unity can
-// re-run and verify these steps as part of a the test suite that runs against
+// re-run and verify these steps as part of the test suite that runs against
 // new CUE versions.
 
 _goos: string @tag(os,var=os)
@@ -43,7 +44,7 @@ command: gen: {
 	workflows: {
 		remove: {
 			glob: file.Glob & {
-				glob: path.Join([_dir, "*.yml"], _goos)
+				glob: path.Join([_dir, "*" + base.workflowFileExtension], _goos)
 				files: [...string]
 			}
 			for _, _filename in glob.files {
