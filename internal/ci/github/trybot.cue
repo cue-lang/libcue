@@ -16,8 +16,7 @@ package github
 
 import (
 	"list"
-
-	"github.com/SchemaStore/schemastore/src/schemas/json"
+	"cue.dev/x/githubactions"
 )
 
 // The trybot workflow.
@@ -66,17 +65,17 @@ workflows: trybot: _repo.bashWorkflow & {
 		}
 	}
 
-	_#goGenerate: json.#step & {
+	_#goGenerate: githubactions.#Step & {
 		name: "Generate"
 		run:  "go generate ./..."
 	}
 
-	_#goTest: json.#step & {
+	_#goTest: githubactions.#Step & {
 		name: "Test"
 		run:  "go test ./..."
 	}
 
-	_#goCheck: json.#step & {
+	_#goCheck: githubactions.#Step & {
 		// These checks can vary between platforms, as different code can be built
 		// based on GOOS and GOARCH build tags.
 		// However, CUE does not have any such build tags yet, and we don't use
