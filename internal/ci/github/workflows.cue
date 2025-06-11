@@ -15,7 +15,7 @@
 // package github declares the workflows for this project.
 package github
 
-// Note: the name of the workflows (and hence the corresponding .yml filenames)
+// Note: the name of the workflows (and hence the corresponding .yaml filenames)
 // correspond to the environment variable names for gerritstatusupdater.
 // Therefore, this filename must only be change in combination with also
 // updating the environment in which gerritstatusupdater is running for this
@@ -40,9 +40,9 @@ workflows: close({
 	// [string]: json.#Workflow
 
 	_repo.trybotWorkflows
-	trybot_dispatch: #dummyDispatch: dummyDispatch
+	trybot_dispatch: #dummyDispatch: _dummyDispatch
 })
 
-dummyDispatch: _repo.#dispatch & {
+_dummyDispatch: _repo.#dispatch & {
 	type: _repo.trybot.key
 }
