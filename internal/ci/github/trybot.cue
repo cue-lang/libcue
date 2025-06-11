@@ -60,6 +60,15 @@ workflows: trybot: _repo.bashWorkflow & {
 				_#goGenerate,
 				_#goTest,
 				_#goCheck,
+
+				{
+					name: "Build libcue per README"
+					run: """
+						go build -o libcue.so -buildmode=c-shared
+						go build -o libcue.a -buildmode=c-archive
+						"""
+				},
+
 				_repo.checkGitClean,
 			]
 		}
