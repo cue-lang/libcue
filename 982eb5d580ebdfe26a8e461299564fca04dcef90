@@ -16,6 +16,24 @@
       "message": "update this too? or why do we need it here anyway? my 2c would be to remove it unless we really want to enforce a toolchain minimum requirement beyond what\u0027s in the `go` line above",
       "revId": "982eb5d580ebdfe26a8e461299564fca04dcef90",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f69c5da6_11a4f263",
+        "filename": "go.mod",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1017723
+      },
+      "writtenOn": "2025-10-01T13:02:00Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "35a12d2a_e6baa491",
+      "revId": "982eb5d580ebdfe26a8e461299564fca04dcef90",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
