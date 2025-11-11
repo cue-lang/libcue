@@ -19,7 +19,7 @@ import (
 	"encoding/yaml"
 	"tool/file"
 
-	"cuelang.org/c/cue/internal/ci/base"
+	"github.com/cue-lang/tmp/internal/ci/base"
 	"cuelang.org/c/cue/internal/ci/repo"
 	"cuelang.org/c/cue/internal/ci/github"
 )
