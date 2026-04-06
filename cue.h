@@ -101,6 +101,8 @@ char*	cue_error_string(cue_error);
 
 cue_error	cue_compile_string(cue_ctx, char*, cue_bopt*, cue_value*);
 cue_error	cue_compile_bytes(cue_ctx, void*, size_t, cue_bopt*, cue_value*);
+cue_value*  cue_fields(cue_value, size_t*);
+cue_value*	cue_list(cue_value, size_t*);
 cue_value	cue_top(cue_ctx);
 cue_value	cue_bottom(cue_ctx);
 cue_value	cue_unify(cue_value, cue_value);
@@ -112,6 +114,7 @@ cue_value	cue_from_bool(cue_ctx, bool);
 cue_value	cue_from_double(cue_ctx, double);
 cue_value	cue_from_string(cue_ctx, char*);
 cue_value	cue_from_bytes(cue_ctx, void*, size_t);
+cue_value   cue_from_list(cue_ctx, cue_value*, size_t);
 cue_error	cue_dec_int64(cue_value, int64_t*);
 cue_error	cue_dec_uint64(cue_value, uint64_t*);
 cue_error	cue_dec_bool(cue_value, bool*);
@@ -124,6 +127,7 @@ cue_value	cue_default(cue_value, bool*);
 cue_kind	cue_concrete_kind(cue_value);
 cue_kind	cue_incomplete_kind(cue_value);
 cue_error	cue_value_error(cue_value);
+char*	cue_path(cue_value);
 bool	cue_is_equal(cue_value, cue_value);
 
 cue_bopt	cue_filename(char*);
